@@ -13,6 +13,22 @@ class EmployeeTable extends React.Component {
     this.setState({ filters: { name: event.target.value } });
   };
 
+  filterEmployees = () => {
+    if (this.state.filters.name.length > 0) {
+      const re = new RegExp(`^${this.state.filters.name}`, "i");
+      return this.state.employees.filter(employee => {
+        const match = employee.name.first.match(re);
+        if (match && match[0] !== "") {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    } else {
+      return this.state.employees;
+    }
+  };
+
   componentDidMount() {
     API.getEmployees().then(employees => {
       this.setState({ employees }, function () {
@@ -52,7 +68,7 @@ class EmployeeTable extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.employees.map((employee, index) => (
+                {this.filterEmployees().map((employee, index) => (
                   <tr key={index}>
                     <td>
                       <img
