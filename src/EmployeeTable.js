@@ -4,6 +4,13 @@ import API from "./utils/API.js";
 class EmployeeTable extends React.Component {
   state = {
     employees: [],
+    filters: {
+      name: "",
+    },
+  };
+
+  changeNameFilter = event => {
+    this.setState({ filters: { name: event.target.value } });
   };
 
   componentDidMount() {
@@ -20,6 +27,19 @@ class EmployeeTable extends React.Component {
         <div className="row">
           <div className="col">
             <h1 className="py-3">Employee Table</h1>
+            <form>
+              <div className="form-group">
+                <label for="name-filter">Filter by name:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name-filter"
+                  placeholder="Type a name to begin filtering"
+                  value={this.state.filters.name}
+                  onChange={this.changeNameFilter}
+                />
+              </div>
+            </form>
             <table className="table table-bordered table-hover">
               <thead>
                 <tr>
