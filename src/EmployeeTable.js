@@ -45,11 +45,10 @@ class EmployeeTable extends React.Component {
             <h1 className="py-3">Employee Table</h1>
             <form>
               <div className="form-group">
-                <label for="name-filter">Filter by name:</label>
+                <label>Filter by name:</label>
                 <input
                   type="text"
-                  class="form-control"
-                  id="name-filter"
+                  className="form-control"
                   placeholder="Type a name to begin filtering"
                   value={this.state.filters.name}
                   onChange={this.changeNameFilter}
