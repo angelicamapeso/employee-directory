@@ -1,5 +1,8 @@
+import React from "react";
+import EmployeeTable from "./EmployeeTable";
+
 function App() {
-  return <h1>Hello world!</h1>;
+  return <EmployeeTable />;
 }
 
 export default App;
