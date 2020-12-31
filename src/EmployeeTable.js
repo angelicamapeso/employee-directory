@@ -14,15 +14,11 @@ class EmployeeTable extends React.Component {
   };
 
   filterEmployees = () => {
-    if (this.state.filters.name.length > 0) {
-      const re = new RegExp(`^${this.state.filters.name}`, "i");
-      return this.state.employees.filter(employee => {
-        const match = employee.name.first.match(re);
-        return match && match[0] !== "";
-      });
-    } else {
-      return this.state.employees;
-    }
+    const re = new RegExp(`^${this.state.filters.name || ".*"}`, "i");
+    return this.state.employees.filter(employee => {
+      const match = employee.name.first.match(re);
+      return match;
+    });
   };
 
   componentDidMount() {
