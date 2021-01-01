@@ -35,6 +35,14 @@ class EmployeeTable extends React.Component {
     });
   };
 
+  changeTitleFilter = title => {
+    const currentFilters = this.state.filters;
+    currentFilters[title] = !currentFilters[title];
+    this.setState({
+      filters: currentFilters,
+    });
+  };
+
   changeNameSort = sortName => {
     const currentSort = this.state.sort;
     Object.keys(currentSort).forEach(key => {
@@ -100,6 +108,9 @@ class EmployeeTable extends React.Component {
                       value={title}
                       defaultChecked={this.state.filters[title]}
                       id={formatToId(title)}
+                      onChange={() => {
+                        this.changeTitleFilter(title);
+                      }}
                     />
                     <label
                       className="form-check-label pr-3 pb-2"
