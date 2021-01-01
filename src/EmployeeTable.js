@@ -50,12 +50,18 @@ class EmployeeTable extends React.Component {
     });
   };
 
-  filterEmployees = () => {
+  getEmployees = () => {
     const filteredEmployees = filterEmployeeName(
       this.state.employees,
       this.state.filters.name
     );
-    return sortName(filteredEmployees, "first", "sort-up");
+    if (this.state.sort.firstName !== "sort") {
+      return sortName(filteredEmployees, "first", this.state.sort.firstName);
+    } else if (this.state.sort.lastName !== "sort") {
+      return sortName(filteredEmployees, "last", this.state.sort.lastName);
+    } else {
+      return filteredEmployees;
+    }
   };
 
   componentDidMount() {
@@ -108,7 +114,7 @@ class EmployeeTable extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {this.filterEmployees().map((employee, index) => (
+                {this.getEmployees().map((employee, index) => (
                   <tr key={index}>
                     <td>
                       <img
