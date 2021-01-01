@@ -27,6 +27,20 @@ class EmployeeTable extends React.Component {
     );
   };
 
+  getName = name => {
+    const match = name.match(this.state.filters.name);
+    if (match) {
+      return (
+        <React.Fragment>
+          <strong>{match[0]}</strong>
+          {name.slice(match[0].length)}
+        </React.Fragment>
+      );
+    } else {
+      return name;
+    }
+  };
+
   componentDidMount() {
     API.getEmployees().then(employees => {
       this.setState({ employees }, function () {
@@ -74,8 +88,8 @@ class EmployeeTable extends React.Component {
                         style={{ borderRadius: "50%" }}
                       />
                     </td>
-                    <td>{employee.name.first}</td>
-                    <td>{employee.name.last}</td>
+                    <td>{this.getName(employee.name.first)}</td>
+                    <td>{this.getName(employee.name.last)}</td>
                     <td>{employee.email}</td>
                     <td>{employee.phone}</td>
                     <td>{employee.location.postcode}</td>
