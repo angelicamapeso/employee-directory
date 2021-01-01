@@ -5,18 +5,25 @@ class EmployeeTable extends React.Component {
   state = {
     employees: [],
     filters: {
-      name: "",
+      name: new RegExp(),
     },
   };
 
   changeNameFilter = event => {
-    this.setState({ filters: { name: event.target.value } });
+    this.setState({
+      filters: {
+        name: event.target.value
+          ? new RegExp(`^${event.target.value}`, "i")
+          : new RegExp(),
+      },
+    });
   };
 
   filterEmployees = () => {
-    const re = new RegExp(`^${this.state.filters.name || ".*"}`, "i");
-    return this.state.employees.filter(employee =>
-      employee.name.first.match(re)
+    return this.state.employees.filter(
+      employee =>
+        this.state.filters.name.test(employee.name.first) ||
+        this.state.filters.name.test(employee.name.last)
     );
   };
 
@@ -41,7 +48,7 @@ class EmployeeTable extends React.Component {
                   type="text"
                   className="form-control"
                   placeholder="Type a name to begin filtering"
-                  value={this.state.filters.name}
+                  // value={this.state.filters.name}
                   onChange={this.changeNameFilter}
                 />
               </div>
