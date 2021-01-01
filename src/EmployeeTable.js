@@ -4,7 +4,7 @@ import THSort from "./THSort";
 import API from "./utils/API.js";
 
 import { filterEmployeeName } from "./utils/filter.js";
-import { sortFirstNameAsc } from "./utils/sort.js";
+import { sortName } from "./utils/sort.js";
 import { formatName } from "./utils/format.js";
 
 class EmployeeTable extends React.Component {
@@ -55,7 +55,7 @@ class EmployeeTable extends React.Component {
       this.state.employees,
       this.state.filters.name
     );
-    return sortFirstNameAsc(filteredEmployees);
+    return sortName(filteredEmployees, "first", "sort-up");
   };
 
   componentDidMount() {
