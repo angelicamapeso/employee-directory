@@ -1,8 +1,7 @@
-/* Each format function formats the
-apperance of a piece of employee information.
-Each function returns a react element to
-be displayed */
+/* Each format function takes an input and returns
+formated information */
 
+/*React formatters*/
 import React from "react";
 
 export function formatName(name, nameFilter) {
@@ -17,4 +16,9 @@ export function formatName(name, nameFilter) {
   } else {
     return name;
   }
+}
+
+/*Data formatters*/
+export function formatToId(text) {
+  return text.toLowerCase().replace(" ", "-");
 }

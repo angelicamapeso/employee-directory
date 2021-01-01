@@ -5,7 +5,8 @@ import API from "./utils/API.js";
 
 import { EMPLOYEE_TITLES, filterEmployeeName } from "./utils/filter.js";
 import { SORT, getSortState, sortName } from "./utils/sort.js";
-import { formatName } from "./utils/format.js";
+import { formatName, formatToId } from "./utils/format.js";
+
 
 class EmployeeTable extends React.Component {
   state = {
@@ -92,11 +93,12 @@ class EmployeeTable extends React.Component {
                       className="form-check-input"
                       type="checkbox"
                       value={title}
-                      id={title.toLowerCase().replace(" ", "-")}
+                      defaultChecked={this.state.filters[title]}
+                      id={formatToId(title)}
                     />
                     <label
                       className="form-check-label pr-3 pb-2"
-                      htmlFor={title.toLowerCase().replace(" ", "-")}
+                      htmlFor={formatToId(title)}
                     >
                       {title}
                     </label>
