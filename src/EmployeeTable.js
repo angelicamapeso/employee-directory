@@ -86,8 +86,8 @@ class EmployeeTable extends React.Component {
                 />
               </div>
               <div className="form-group d-flex flex-wrap">
-                {EMPLOYEE_TITLES.map(title => (
-                  <div className="form-check w-25">
+                {EMPLOYEE_TITLES.map((title, index) => (
+                  <div className="form-check w-25" key={index}>
                     <input
                       className="form-check-input"
                       type="checkbox"
@@ -95,7 +95,7 @@ class EmployeeTable extends React.Component {
                       id={title.toLowerCase().replace(" ", "-")}
                     />
                     <label
-                      className="form-check-label"
+                      className="form-check-label pr-3 pb-2"
                       htmlFor={title.toLowerCase().replace(" ", "-")}
                     >
                       {title}
