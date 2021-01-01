@@ -1,12 +1,8 @@
 export const EMPLOYEE_TITLES = [
-  "Web Designer",
   "Front-End Developer",
   "Back-End Developer",
   "Full-Stack Developer",
   "Dev Ops",
-  "UI Designer",
-  "UX Designer",
-  "Interaction Designer",
 ];
 
 export function getRandomTitle() {
