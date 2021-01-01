@@ -7,12 +7,17 @@ import { EMPLOYEE_TITLES, filterEmployeeName } from "./utils/filter.js";
 import { SORT, getSortState, sortName } from "./utils/sort.js";
 import { formatName, formatToId } from "./utils/format.js";
 
+const employeeTitleFilters = EMPLOYEE_TITLES.reduce(
+  (obj, title) => Object.assign(obj, { [title]: true }),
+  {}
+);
 
 class EmployeeTable extends React.Component {
   state = {
     employees: [],
     filters: {
       name: new RegExp(),
+      ...employeeTitleFilters,
     },
     sort: {
       firstName: SORT,
