@@ -15,7 +15,7 @@ function THSort(props) {
       iconName = "fa-sort";
   }
   return (
-    <th scope="col" className="th-sort">
+    <th scope="col" className="th-sort" onClick={props.onClick}>
       <p className="d-flex justify-content-between mb-0 align-items-center">
         {props.title}
         <i className={"fas " + iconName}></i>

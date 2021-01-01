@@ -29,6 +29,27 @@ class EmployeeTable extends React.Component {
     });
   };
 
+  getSortState = currentSort => {
+    return currentSort === "sort"
+      ? "sort-up"
+      : currentSort === "sort-up"
+      ? "sort-down"
+      : "sort";
+  };
+
+  changeNameSort = sortName => {
+    const currentSort = this.state.sort;
+    Object.keys(currentSort).forEach(key => {
+      if (key !== sortName) {
+        currentSort[key] = "sort";
+      }
+    });
+    currentSort[sortName] = this.getSortState(currentSort[sortName]);
+    this.setState({
+      sort: currentSort,
+    });
+  };
+
   filterEmployees = () => {
     const filteredEmployees = filterEmployeeName(
       this.state.employees,
@@ -67,8 +88,20 @@ class EmployeeTable extends React.Component {
               <thead>
                 <tr>
                   <th scope="col">Image</th>
-                  <THSort title="First Name" icon={this.state.sort.firstName} />
-                  <THSort title="Last Name" icon={this.state.sort.lastName} />
+                  <THSort
+                    title="First Name"
+                    icon={this.state.sort.firstName}
+                    onClick={() => {
+                      this.changeNameSort("firstName");
+                    }}
+                  />
+                  <THSort
+                    title="Last Name"
+                    icon={this.state.sort.lastName}
+                    onClick={() => {
+                      this.changeNameSort("lastName");
+                    }}
+                  />
                   <th scope="col">Email</th>
                   <th scope="col">Phone Number</th>
                   <th scope="col">Postal Code</th>
