@@ -67,8 +67,8 @@ class EmployeeTable extends React.Component {
               <thead>
                 <tr>
                   <th scope="col">Image</th>
-                  <THSort title="First Name" state="sort" />
-                  <THSort title="Last Name" state="sort" />
+                  <THSort title="First Name" icon="sort" />
+                  <THSort title="Last Name" icon="sort" />
                   <th scope="col">Email</th>
                   <th scope="col">Phone Number</th>
                   <th scope="col">Postal Code</th>

@@ -3,7 +3,7 @@ import "./style.css";
 
 function THSort(props) {
   let iconName;
-  switch (props.state) {
+  switch (props.icon) {
     case "sort-down":
       iconName = "fa-sort-down";
       break;
