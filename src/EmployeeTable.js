@@ -82,10 +82,11 @@ class EmployeeTable extends React.Component {
                 />
               </div>
             </form>
-            <table className="table table-bordered table-hover">
+            <table className="table table-bordered table-hover table-sm">
               <thead>
                 <tr>
                   <th scope="col">Image</th>
+                  <th scope="col">Title</th>
                   <THSort
                     title="First Name"
                     icon={this.state.sort.firstName}
@@ -115,6 +116,7 @@ class EmployeeTable extends React.Component {
                         style={{ borderRadius: "50%" }}
                       />
                     </td>
+                    <td>{employee.title}</td>
                     <td>
                       {formatName(employee.name.first, this.state.filters.name)}
                     </td>
