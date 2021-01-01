@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 
 function THSort(props) {
   let iconName;
@@ -14,7 +15,7 @@ function THSort(props) {
       iconName = "fa-sort";
   }
   return (
-    <th scope="col">
+    <th scope="col" className="th-sort">
       <p className="d-flex justify-content-between mb-0 align-items-center">
         {props.title}
         <i className={"fas " + iconName}></i>
