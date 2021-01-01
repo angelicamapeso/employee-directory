@@ -1,16 +1,17 @@
 import React from "react";
 import "./style.css";
+import { SORT, SORT_UP, SORT_DOWN } from "./../utils/sort";
 
 function THSort(props) {
   let iconName;
   switch (props.icon) {
-    case "sort-down":
+    case SORT_DOWN:
       iconName = "fa-sort-down";
       break;
-    case "sort-up":
+    case SORT_UP:
       iconName = "fa-sort-up";
       break;
-    case "sort":
+    case SORT:
     default:
       iconName = "fa-sort";
   }

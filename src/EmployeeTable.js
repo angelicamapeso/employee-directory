@@ -4,7 +4,7 @@ import THSort from "./THSort";
 import API from "./utils/API.js";
 
 import { filterEmployeeName } from "./utils/filter.js";
-import { sortName } from "./utils/sort.js";
+import { SORT, getSortState, sortName } from "./utils/sort.js";
 import { formatName } from "./utils/format.js";
 
 class EmployeeTable extends React.Component {
@@ -14,8 +14,8 @@ class EmployeeTable extends React.Component {
       name: new RegExp(),
     },
     sort: {
-      firstName: "sort",
-      lastName: "sort",
+      firstName: SORT,
+      lastName: SORT,
     },
   };
 
@@ -29,22 +29,14 @@ class EmployeeTable extends React.Component {
     });
   };
 
-  getSortState = currentSort => {
-    return currentSort === "sort"
-      ? "sort-up"
-      : currentSort === "sort-up"
-      ? "sort-down"
-      : "sort";
-  };
-
   changeNameSort = sortName => {
     const currentSort = this.state.sort;
     Object.keys(currentSort).forEach(key => {
       if (key !== sortName) {
-        currentSort[key] = "sort";
+        currentSort[key] = SORT;
       }
     });
-    currentSort[sortName] = this.getSortState(currentSort[sortName]);
+    currentSort[sortName] = getSortState(currentSort[sortName]);
     this.setState({
       sort: currentSort,
     });
@@ -55,9 +47,9 @@ class EmployeeTable extends React.Component {
       this.state.employees,
       this.state.filters.name
     );
-    if (this.state.sort.firstName !== "sort") {
+    if (this.state.sort.firstName !== SORT) {
       return sortName(filteredEmployees, "first", this.state.sort.firstName);
-    } else if (this.state.sort.lastName !== "sort") {
+    } else if (this.state.sort.lastName !== SORT) {
       return sortName(filteredEmployees, "last", this.state.sort.lastName);
     } else {
       return filteredEmployees;
