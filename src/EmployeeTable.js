@@ -26,12 +26,12 @@ class EmployeeTable extends React.Component {
   };
 
   changeNameFilter = event => {
+    const currentFilters = this.state.filters;
+    currentFilters.name = event.target.value
+      ? new RegExp(`^${event.target.value}`, "i")
+      : new RegExp();
     this.setState({
-      filters: {
-        name: event.target.value
-          ? new RegExp(`^${event.target.value}`, "i")
-          : new RegExp(),
-      },
+      filters: currentFilters,
     });
   };
 
