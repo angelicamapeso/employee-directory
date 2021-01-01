@@ -15,10 +15,9 @@ class EmployeeTable extends React.Component {
 
   filterEmployees = () => {
     const re = new RegExp(`^${this.state.filters.name || ".*"}`, "i");
-    return this.state.employees.filter(employee => {
-      const match = employee.name.first.match(re);
-      return match;
-    });
+    return this.state.employees.filter(employee =>
+      employee.name.first.match(re)
+    );
   };
 
   componentDidMount() {
