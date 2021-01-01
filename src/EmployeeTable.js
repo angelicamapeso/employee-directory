@@ -1,4 +1,6 @@
 import React from "react";
+import THSort from "./THSort";
+
 import API from "./utils/API.js";
 
 import { filterEmployeeName } from "./utils/filter.js";
@@ -10,6 +12,10 @@ class EmployeeTable extends React.Component {
     employees: [],
     filters: {
       name: new RegExp(),
+    },
+    sort: {
+      firstName: 0,
+      lastName: 0,
     },
   };
 
@@ -61,8 +67,8 @@ class EmployeeTable extends React.Component {
               <thead>
                 <tr>
                   <th scope="col">Image</th>
-                  <th scope="col">First Name</th>
-                  <th scope="col">Last Name</th>
+                  <THSort title="First Name" state="sort" />
+                  <THSort title="Last Name" state="sort" />
                   <th scope="col">Email</th>
                   <th scope="col">Phone Number</th>
                   <th scope="col">Postal Code</th>
