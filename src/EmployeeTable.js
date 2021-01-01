@@ -2,6 +2,7 @@ import React from "react";
 import API from "./utils/API.js";
 
 import { filterEmployeeName } from "./utils/filter.js";
+import { formatName } from "./utils/format.js";
 
 class EmployeeTable extends React.Component {
   state = {
@@ -23,20 +24,6 @@ class EmployeeTable extends React.Component {
 
   filterEmployees = () => {
     return filterEmployeeName(this.state.employees, this.state.filters.name);
-  };
-
-  getName = name => {
-    const match = name.match(this.state.filters.name);
-    if (match) {
-      return (
-        <React.Fragment>
-          <strong>{match[0]}</strong>
-          {name.slice(match[0].length)}
-        </React.Fragment>
-      );
-    } else {
-      return name;
-    }
   };
 
   componentDidMount() {
@@ -86,8 +73,12 @@ class EmployeeTable extends React.Component {
                         style={{ borderRadius: "50%" }}
                       />
                     </td>
-                    <td>{this.getName(employee.name.first)}</td>
-                    <td>{this.getName(employee.name.last)}</td>
+                    <td>
+                      {formatName(employee.name.first, this.state.filters.name)}
+                    </td>
+                    <td>
+                      {formatName(employee.name.last, this.state.filters.name)}
+                    </td>
                     <td>{employee.email}</td>
                     <td>{employee.phone}</td>
                     <td>{employee.location.postcode}</td>
