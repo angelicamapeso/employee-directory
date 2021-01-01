@@ -82,7 +82,6 @@ class EmployeeTable extends React.Component {
                   type="text"
                   className="form-control"
                   placeholder="Type a name to begin filtering"
-                  // value={this.state.filters.name}
                   onChange={this.changeNameFilter}
                 />
               </div>
