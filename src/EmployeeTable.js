@@ -14,8 +14,8 @@ class EmployeeTable extends React.Component {
       name: new RegExp(),
     },
     sort: {
-      firstName: 0,
-      lastName: 0,
+      firstName: "sort",
+      lastName: "sort",
     },
   };
 
@@ -67,8 +67,8 @@ class EmployeeTable extends React.Component {
               <thead>
                 <tr>
                   <th scope="col">Image</th>
-                  <THSort title="First Name" icon="sort" />
-                  <THSort title="Last Name" icon="sort" />
+                  <THSort title="First Name" icon={this.state.sort.firstName} />
+                  <THSort title="Last Name" icon={this.state.sort.lastName} />
                   <th scope="col">Email</th>
                   <th scope="col">Phone Number</th>
                   <th scope="col">Postal Code</th>
