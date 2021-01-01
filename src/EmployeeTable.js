@@ -3,7 +3,11 @@ import THSort from "./THSort";
 
 import API from "./utils/API.js";
 
-import { EMPLOYEE_TITLES, filterEmployeeName } from "./utils/filter.js";
+import {
+  EMPLOYEE_TITLES,
+  filterEmployeeName,
+  filterEmployeeTitle,
+} from "./utils/filter.js";
 import { SORT, getSortState, sortName } from "./utils/sort.js";
 import { formatName, formatToId } from "./utils/format.js";
 
@@ -57,8 +61,13 @@ class EmployeeTable extends React.Component {
   };
 
   getEmployees = () => {
-    const filteredEmployees = filterEmployeeName(
+    const filteredTitles = filterEmployeeTitle(
       this.state.employees,
+      this.state.filters,
+      EMPLOYEE_TITLES
+    );
+    const filteredEmployees = filterEmployeeName(
+      filteredTitles,
       this.state.filters.name
     );
     if (this.state.sort.firstName !== SORT) {
