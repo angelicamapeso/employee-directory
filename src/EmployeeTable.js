@@ -3,7 +3,7 @@ import THSort from "./THSort";
 
 import API from "./utils/API.js";
 
-import { filterEmployeeName } from "./utils/filter.js";
+import { EMPLOYEE_TITLES, filterEmployeeName } from "./utils/filter.js";
 import { SORT, getSortState, sortName } from "./utils/sort.js";
 import { formatName } from "./utils/format.js";
 
@@ -69,7 +69,11 @@ class EmployeeTable extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col">
-            <h1 className="py-3">Employee Table</h1>
+            <h1>Employee Table</h1>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
             <form>
               <div className="form-group">
                 <label>Filter by name:</label>
@@ -81,7 +85,29 @@ class EmployeeTable extends React.Component {
                   onChange={this.changeNameFilter}
                 />
               </div>
+              <div className="form-group d-flex flex-wrap">
+                {EMPLOYEE_TITLES.map(title => (
+                  <div className="form-check w-25">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      value={title}
+                      id={title.toLowerCase().replace(" ", "-")}
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor={title.toLowerCase().replace(" ", "-")}
+                    >
+                      {title}
+                    </label>
+                  </div>
+                ))}
+              </div>
             </form>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
             <table className="table table-bordered table-hover table-sm">
               <thead>
                 <tr>
