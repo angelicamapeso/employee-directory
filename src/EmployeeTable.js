@@ -76,8 +76,9 @@ class EmployeeTable extends React.Component {
           <div className="col">
             <form>
               <div className="form-group">
-                <label>Filter by name:</label>
+                <label htmlFor="name-filter">Filter by name:</label>
                 <input
+                  id="name-filter"
                   type="text"
                   className="form-control"
                   placeholder="Type a name to begin filtering"
