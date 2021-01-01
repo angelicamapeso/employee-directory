@@ -1,6 +1,8 @@
 import React from "react";
 import API from "./utils/API.js";
 
+import { filterEmployeeName } from "./utils/filter.js";
+
 class EmployeeTable extends React.Component {
   state = {
     employees: [],
@@ -20,11 +22,7 @@ class EmployeeTable extends React.Component {
   };
 
   filterEmployees = () => {
-    return this.state.employees.filter(
-      employee =>
-        this.state.filters.name.test(employee.name.first) ||
-        this.state.filters.name.test(employee.name.last)
-    );
+    return filterEmployeeName(this.state.employees, this.state.filters.name);
   };
 
   getName = name => {
