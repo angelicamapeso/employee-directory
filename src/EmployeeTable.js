@@ -24,7 +24,11 @@ class EmployeeTable extends React.Component {
   };
 
   filterEmployees = () => {
-    return filterEmployeeName(this.state.employees, this.state.filters.name);
+    const filteredEmployees = filterEmployeeName(
+      this.state.employees,
+      this.state.filters.name
+    );
+    return sortFirstNameAlpha(filteredEmployees);
   };
 
   componentDidMount() {
