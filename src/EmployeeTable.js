@@ -2,6 +2,7 @@ import React from "react";
 import API from "./utils/API.js";
 
 import { filterEmployeeName } from "./utils/filter.js";
+import { sortFirstNameAlpha } from "./utils/sort.js";
 import { formatName } from "./utils/format.js";
 
 class EmployeeTable extends React.Component {
