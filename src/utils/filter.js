@@ -51,9 +51,9 @@ export function filterEmployeeName(employeeList, nameFilter) {
   );
 }
 
-export function filterEmployeeTitle(employeeList, filters, employeeTitles) {
+export function filterEmployeeTitle(employeeList, filters) {
   const allowedTitles = [];
-  for (const title of employeeTitles) {
+  for (const title of EMPLOYEE_TITLES) {
     if (filters[title]) {
       allowedTitles.push(title);
     }
@@ -61,4 +61,10 @@ export function filterEmployeeTitle(employeeList, filters, employeeTitles) {
   return employeeList.filter(employee =>
     allowedTitles.includes(employee.title)
   );
+}
+
+export function filterEmployees(employeeList, filters) {
+  const filteredByTitle = filterEmployeeTitle(employeeList, filters);
+  const filteredByName = filterEmployeeName(filteredByTitle, filters.name);
+  return filteredByName;
 }

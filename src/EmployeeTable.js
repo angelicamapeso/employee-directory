@@ -8,8 +8,7 @@ import {
   FILTER_OBJ,
   modifyNameFilter,
   modifyTitleFilter,
-  filterEmployeeName,
-  filterEmployeeTitle,
+  filterEmployees,
 } from "./utils/filter.js";
 import { SORT, getSortState, sortName } from "./utils/sort.js";
 import { formatName, formatToId } from "./utils/format.js";
@@ -50,14 +49,9 @@ class EmployeeTable extends React.Component {
   };
 
   getEmployees = () => {
-    const filteredTitles = filterEmployeeTitle(
+    const filteredEmployees = filterEmployees(
       this.state.employees,
-      this.state.filters,
-      EMPLOYEE_TITLES
-    );
-    const filteredEmployees = filterEmployeeName(
-      filteredTitles,
-      this.state.filters.name
+      this.state.filters
     );
     if (this.state.sort.firstName !== SORT) {
       return sortName(filteredEmployees, "first", this.state.sort.firstName);
