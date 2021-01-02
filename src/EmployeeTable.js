@@ -77,7 +77,7 @@ class EmployeeTable extends React.Component {
             </h1>
           </div>
         </div>
-        <div className="row">
+        <div className="row py-3">
           <div className="col">
             <form>
               <TextFilter
