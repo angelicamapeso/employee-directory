@@ -6,6 +6,7 @@ import { EMPLOYEE_TITLES } from "./utils/employeeTitles";
 
 import {
   FILTER_OBJ,
+  modifyNameFilter,
   filterEmployeeName,
   filterEmployeeTitle,
 } from "./utils/filter.js";
@@ -23,12 +24,8 @@ class EmployeeTable extends React.Component {
   };
 
   changeNameFilter = event => {
-    const currentFilters = this.state.filters;
-    currentFilters.name = event.target.value
-      ? new RegExp(`^${event.target.value}`, "i")
-      : new RegExp();
     this.setState({
-      filters: currentFilters,
+      filters: modifyNameFilter(event.target.value, this.state.filters),
     });
   };
 

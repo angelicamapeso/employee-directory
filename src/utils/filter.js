@@ -19,6 +19,16 @@ export const FILTER_OBJ = {
 /*****************************/
 // Modifying filter state
 /*****************************/
+/* Each filter state function
+takes the current state, the value to change it with
+and returns an entire filter object  which is used to
+update the state in EmployeeTable*/
+
+export function modifyNameFilter(input, currentFilters) {
+  const filterToModify = currentFilters;
+  filterToModify.name = input ? new RegExp(`^${input}`, "i") : new RegExp();
+  return filterToModify;
+}
 
 /*****************************/
 // Filter functions
