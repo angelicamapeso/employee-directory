@@ -18,7 +18,13 @@ import {
 } from "./utils/filter.js";
 
 // Sort
-import { SORT_OBJ, SORT, getSortState, sortName } from "./utils/sort.js";
+import {
+  SORT_OBJ,
+  NAME_SORT,
+  SORT,
+  getSortState,
+  sortName,
+} from "./utils/sort.js";
 
 // Formatters
 import { formatName } from "./utils/format.js";
@@ -60,10 +66,14 @@ class EmployeeTable extends React.Component {
       this.state.employees,
       this.state.filters
     );
-    if (this.state.sort.firstName !== SORT) {
-      return sortName(filteredEmployees, "first", this.state.sort.firstName);
-    } else if (this.state.sort.lastName !== SORT) {
-      return sortName(filteredEmployees, "last", this.state.sort.lastName);
+    if (this.state.sort["First Name"] !== SORT) {
+      return sortName(
+        filteredEmployees,
+        "first",
+        this.state.sort["First Name"]
+      );
+    } else if (this.state.sort["Last Name"] !== SORT) {
+      return sortName(filteredEmployees, "last", this.state.sort["Last Name"]);
     } else {
       return filteredEmployees;
     }
@@ -109,20 +119,15 @@ class EmployeeTable extends React.Component {
                 <tr>
                   <th scope="col">Image</th>
                   <th scope="col">Title</th>
-                  <THSort
-                    title="First Name"
-                    icon={this.state.sort.firstName}
-                    onClick={() => {
-                      this.changeNameSort("firstName");
-                    }}
-                  />
-                  <THSort
-                    title="Last Name"
-                    icon={this.state.sort.lastName}
-                    onClick={() => {
-                      this.changeNameSort("lastName");
-                    }}
-                  />
+                  {NAME_SORT.map(nameObj => (
+                    <THSort
+                      title={nameObj.title}
+                      icon={this.state.sort[nameObj.title]}
+                      onClick={() => {
+                        this.changeNameSort(nameObj.title);
+                      }}
+                    />
+                  ))}
                   <th scope="col">Email</th>
                   <th scope="col">Phone Number</th>
                   <th scope="col">Postal Code</th>

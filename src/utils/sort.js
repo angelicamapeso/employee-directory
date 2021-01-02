@@ -26,7 +26,7 @@ export const NAME_SORT = [
     nameField: "first",
   },
   {
-    title: "lastName",
+    title: "Last Name",
     nameField: "last",
   },
 ];
