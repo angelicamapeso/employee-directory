@@ -7,6 +7,7 @@ import { EMPLOYEE_TITLES } from "./utils/employeeTitles";
 import {
   FILTER_OBJ,
   modifyNameFilter,
+  modifyTitleFilter,
   filterEmployeeName,
   filterEmployeeTitle,
 } from "./utils/filter.js";
@@ -30,10 +31,8 @@ class EmployeeTable extends React.Component {
   };
 
   changeTitleFilter = title => {
-    const currentFilters = this.state.filters;
-    currentFilters[title] = !currentFilters[title];
     this.setState({
-      filters: currentFilters,
+      filters: modifyTitleFilter(title, this.state.filters),
     });
   };
 

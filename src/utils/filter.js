@@ -30,6 +30,12 @@ export function modifyNameFilter(input, currentFilters) {
   return filterToModify;
 }
 
+export function modifyTitleFilter(title, currentFilters) {
+  const filterToModify = currentFilters;
+  filterToModify[title] = !filterToModify[title];
+  return filterToModify;
+}
+
 /*****************************/
 // Filter functions
 /*****************************/
