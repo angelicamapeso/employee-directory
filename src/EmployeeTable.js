@@ -72,7 +72,9 @@ class EmployeeTable extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col">
-            <h1>Employee Table</h1>
+            <h1 className="mt-3">
+              <i className="fas fa-id-badge mr-3"></i>Employee Directory
+            </h1>
           </div>
         </div>
         <div className="row">
