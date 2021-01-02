@@ -1,4 +1,7 @@
-/* Deals with the different sort states that are possible:
+/*****************************/
+// Sort states
+/*****************************/
+/*
   SORT = default (non-sorted)
   SORT_UP = ASC sort
   SORT_DOWN = DESC sort
@@ -12,6 +15,19 @@ export function getSortState(currentSort) {
     ? SORT_STATES[0]
     : SORT_STATES[indexNewSort];
 }
+
+/*****************************/
+// Setting up Sort Object
+/*****************************/
+export const NAME_SORT = ["firstName", "lastName"];
+// Reducing SORT_BY columns to keys with default state in SORT_OBJ
+const nameSortKeys = NAME_SORT.reduce(
+  (obj, field) => Object.assign(obj, { [field]: SORT }),
+  {}
+);
+export const SORT_OBJ = {
+  ...nameSortKeys,
+};
 
 /* Every sort function takes a list (assumped employee list)
 and returns a sorted array */

@@ -18,7 +18,7 @@ import {
 } from "./utils/filter.js";
 
 // Sort
-import { SORT, getSortState, sortName } from "./utils/sort.js";
+import { SORT_OBJ, SORT, getSortState, sortName } from "./utils/sort.js";
 
 // Formatters
 import { formatName } from "./utils/format.js";
@@ -27,10 +27,7 @@ class EmployeeTable extends React.Component {
   state = {
     employees: [],
     filters: FILTER_OBJ,
-    sort: {
-      firstName: SORT,
-      lastName: SORT,
-    },
+    sort: SORT_OBJ,
   };
 
   changeNameFilter = event => {
