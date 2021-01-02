@@ -3,6 +3,7 @@ import React from "react";
 // Components
 import THSort from "./THSort";
 import TextFilter from "./TextFilter";
+import CheckGroupFilter from "./CheckGroupFilter";
 
 // Data
 import API from "./utils/API.js";
@@ -20,7 +21,7 @@ import {
 import { SORT, getSortState, sortName } from "./utils/sort.js";
 
 // Formatters
-import { formatName, formatToId } from "./utils/format.js";
+import { formatName } from "./utils/format.js";
 
 class EmployeeTable extends React.Component {
   state = {
@@ -96,28 +97,11 @@ class EmployeeTable extends React.Component {
                 placeholder="Type a name to begin filtering"
                 onChange={this.changeNameFilter}
               />
-              <div className="form-group d-flex flex-wrap">
-                {EMPLOYEE_TITLES.map((title, index) => (
-                  <div className="form-check w-25" key={index}>
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value={title}
-                      defaultChecked={this.state.filters[title]}
-                      id={formatToId(title)}
-                      onChange={() => {
-                        this.changeTitleFilter(title);
-                      }}
-                    />
-                    <label
-                      className="form-check-label pr-3 pb-2"
-                      htmlFor={formatToId(title)}
-                    >
-                      {title}
-                    </label>
-                  </div>
-                ))}
-              </div>
+              <CheckGroupFilter
+                filters={this.state.filters}
+                checkList={EMPLOYEE_TITLES}
+                update={this.changeTitleFilter}
+              />
             </form>
           </div>
         </div>
