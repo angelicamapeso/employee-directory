@@ -19,12 +19,24 @@ export function getSortState(currentSort) {
 /*****************************/
 // Setting up Sort Object
 /*****************************/
-export const NAME_SORT = ["firstName", "lastName"];
-// Reducing SORT_BY columns to keys with default state in SORT_OBJ
+
+export const NAME_SORT = [
+  {
+    title: "First Name",
+    nameField: "first",
+  },
+  {
+    title: "lastName",
+    nameField: "last",
+  },
+];
+// Reducing NAME_SORT items to keys set to default SORT state
 const nameSortKeys = NAME_SORT.reduce(
-  (obj, field) => Object.assign(obj, { [field]: SORT }),
+  (obj, nameObj) => Object.assign(obj, { [nameObj.title]: SORT }),
   {}
 );
+
+/*** Main object holding all sorts for EmployeeTable ***/
 export const SORT_OBJ = {
   ...nameSortKeys,
 };
