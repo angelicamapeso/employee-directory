@@ -23,7 +23,7 @@ import {
   NAME_SORT,
   SORT,
   getSortState,
-  sortName,
+  sortEmployees,
 } from "./utils/sort.js";
 
 // Formatters
@@ -66,17 +66,7 @@ class EmployeeTable extends React.Component {
       this.state.employees,
       this.state.filters
     );
-    if (this.state.sort["First Name"] !== SORT) {
-      return sortName(
-        filteredEmployees,
-        "first",
-        this.state.sort["First Name"]
-      );
-    } else if (this.state.sort["Last Name"] !== SORT) {
-      return sortName(filteredEmployees, "last", this.state.sort["Last Name"]);
-    } else {
-      return filteredEmployees;
-    }
+    return sortEmployees(filteredEmployees, this.state.sort);
   };
 
   componentDidMount() {

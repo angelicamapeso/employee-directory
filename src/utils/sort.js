@@ -51,3 +51,13 @@ export function sortName(employeeList, sortCol, dir) {
       (dir === SORT_UP ? 1 : dir === SORT_DOWN ? -1 : 0)
   );
 }
+
+export function sortEmployees(employeeList, sort) {
+  for (const nameObj of NAME_SORT) {
+    if (sort[nameObj.title] !== SORT) {
+      return sortName(employeeList, nameObj.nameField, sort[nameObj.title]);
+    }
+  }
+
+  return employeeList;
+}
