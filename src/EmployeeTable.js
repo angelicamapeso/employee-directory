@@ -1,16 +1,25 @@
 import React from "react";
-import THSort from "./THSort";
 
+// Components
+import THSort from "./THSort";
+import TextFilter from "./TextFilter";
+
+// Data
 import API from "./utils/API.js";
 import { EMPLOYEE_TITLES } from "./utils/employeeTitles";
 
+// Filter
 import {
   FILTER_OBJ,
   modifyNameFilter,
   modifyTitleFilter,
   filterEmployees,
 } from "./utils/filter.js";
+
+// Sort
 import { SORT, getSortState, sortName } from "./utils/sort.js";
+
+// Formatters
 import { formatName, formatToId } from "./utils/format.js";
 
 class EmployeeTable extends React.Component {
@@ -81,16 +90,12 @@ class EmployeeTable extends React.Component {
         <div className="row">
           <div className="col">
             <form>
-              <div className="form-group">
-                <label htmlFor="name-filter">Filter by name:</label>
-                <input
-                  id="name-filter"
-                  type="text"
-                  className="form-control"
-                  placeholder="Type a name to begin filtering"
-                  onChange={this.changeNameFilter}
-                />
-              </div>
+              <TextFilter
+                id="name-filter"
+                title="Filter by name:"
+                placeholder="Type a name to begin filtering"
+                onChange={this.changeNameFilter}
+              />
               <div className="form-group d-flex flex-wrap">
                 {EMPLOYEE_TITLES.map((title, index) => (
                   <div className="form-check w-25" key={index}>
