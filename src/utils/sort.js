@@ -41,6 +41,26 @@ export const SORT_OBJ = {
   ...nameSortKeys,
 };
 
+/*****************************/
+// Modifying sort
+/*****************************/
+// There can be only one active sort
+// All other sort properties are reset when another
+// is changed
+export function modifySort(sortName, currentSort) {
+  const sortToModify = currentSort;
+  Object.keys(sortToModify).forEach(key => {
+    if (key !== sortName) {
+      sortToModify[key] = SORT;
+    }
+  });
+  sortToModify[sortName] = getSortState(sortToModify[sortName]);
+  return sortToModify;
+}
+
+/*****************************/
+// Sort functions
+/*****************************/
 /* Every sort function takes a list (assumped employee list)
 and returns a sorted array */
 export function sortName(employeeList, sortCol, dir) {

@@ -21,8 +21,7 @@ import {
 import {
   SORT_OBJ,
   NAME_SORT,
-  SORT,
-  getSortState,
+  modifySort,
   sortEmployees,
 } from "./utils/sort.js";
 
@@ -49,15 +48,8 @@ class EmployeeTable extends React.Component {
   };
 
   changeNameSort = sortName => {
-    const currentSort = this.state.sort;
-    Object.keys(currentSort).forEach(key => {
-      if (key !== sortName) {
-        currentSort[key] = SORT;
-      }
-    });
-    currentSort[sortName] = getSortState(currentSort[sortName]);
     this.setState({
-      sort: currentSort,
+      sort: modifySort(sortName, this.state.sort),
     });
   };
 
