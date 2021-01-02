@@ -96,7 +96,7 @@ class EmployeeTable extends React.Component {
         </div>
         <div className="row">
           <div className="col">
-            <table className="table table-bordered table-hover table-sm">
+            <table className="table table-hover">
               <thead>
                 <tr>
                   <th scope="col">Image</th>
