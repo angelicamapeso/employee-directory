@@ -1,7 +1,7 @@
 import React from "react";
 
 // Formatters
-import { formatName } from "./utils/format.js";
+import TextMatch from "./TextMatch";
 
 function EmployeeRow(props) {
   return (
@@ -14,8 +14,18 @@ function EmployeeRow(props) {
         />
       </td>
       <td>{props.employee.title}</td>
-      <td>{formatName(props.employee.name.first, props.nameMatch)}</td>
-      <td>{formatName(props.employee.name.last, props.nameMatch)}</td>
+      <td>
+        <TextMatch
+          text={props.employee.name.first}
+          matchWith={props.nameMatch}
+        />
+      </td>
+      <td>
+        <TextMatch
+          text={props.employee.name.last}
+          matchWith={props.nameMatch}
+        />
+      </td>
       <td>{props.employee.email}</td>
       <td>{props.employee.phone}</td>
       <td>{props.employee.location.postcode}</td>
