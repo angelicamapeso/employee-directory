@@ -2,6 +2,7 @@ import React from "react";
 
 // Components
 import THSort from "./THSort";
+import EmployeeRow from "./EmployeeRow";
 import TextFilter from "./TextFilter";
 import CheckGroupFilter from "./CheckGroupFilter";
 
@@ -24,9 +25,6 @@ import {
   modifySort,
   sortEmployees,
 } from "./utils/sort.js";
-
-// Formatters
-import { formatName } from "./utils/format.js";
 
 class EmployeeTable extends React.Component {
   state = {
@@ -118,25 +116,11 @@ class EmployeeTable extends React.Component {
               </thead>
               <tbody>
                 {this.getEmployees().map((employee, index) => (
-                  <tr key={index}>
-                    <td>
-                      <img
-                        src={employee.picture.thumbnail}
-                        alt={`${employee.name.first} ${employee.name.last}`}
-                        style={{ borderRadius: "50%" }}
-                      />
-                    </td>
-                    <td>{employee.title}</td>
-                    <td>
-                      {formatName(employee.name.first, this.state.filters.name)}
-                    </td>
-                    <td>
-                      {formatName(employee.name.last, this.state.filters.name)}
-                    </td>
-                    <td>{employee.email}</td>
-                    <td>{employee.phone}</td>
-                    <td>{employee.location.postcode}</td>
-                  </tr>
+                  <EmployeeRow
+                    key={index}
+                    employee={employee}
+                    nameMatch={this.state.filters.name}
+                  />
                 ))}
               </tbody>
             </table>
