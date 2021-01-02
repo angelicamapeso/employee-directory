@@ -2,9 +2,10 @@ import React from "react";
 import THSort from "./THSort";
 
 import API from "./utils/API.js";
+import { EMPLOYEE_TITLES } from "./utils/employeeTitles";
 
 import {
-  EMPLOYEE_TITLES,
+  // EMPLOYEE_TITLES,
   filterEmployeeName,
   filterEmployeeTitle,
 } from "./utils/filter.js";

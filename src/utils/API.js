@@ -1,4 +1,4 @@
-import { getRandomTitle } from "./filter";
+import { getRandomTitle } from "./employeeTitles";
 
 const API = {
   getEmployees() {
