@@ -101,8 +101,9 @@ class EmployeeTable extends React.Component {
                 <tr>
                   <th scope="col">Image</th>
                   <th scope="col">Title</th>
-                  {NAME_SORT.map(nameObj => (
+                  {NAME_SORT.map((nameObj, index) => (
                     <THSort
+                      key={index}
                       title={nameObj.title}
                       icon={this.state.sort[nameObj.title]}
                       onClick={() => {
