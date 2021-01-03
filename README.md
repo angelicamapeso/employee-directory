@@ -2,7 +2,7 @@
 
 ![Employee Directory Homepage](./img/home.png)
 
-:link: [Go lookup some employees!](https://serene-escarpment-10194.herokuapp.com/)
+:link: [Go lookup some employees!](https://angelicamapeso.github.io/employee-directory/)
 
 A sortable and filterable employee directory.
 
