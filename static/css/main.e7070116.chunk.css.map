@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/THSort/style.css"],"names":[],"mappings":"AAAA,eACE,cAAe,CACf,wBACF","file":"main.e7070116.chunk.css","sourcesContent":[".th-sort:hover {\r\n  cursor: pointer;\r\n  background-color: #f8f9fa;\r\n}\r\n"]}
