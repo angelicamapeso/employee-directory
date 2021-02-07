@@ -1,4 +1,4 @@
-# Bootcamp - Homework 14: Employee Directory
+# Employee Directory
 
 ![Employee Directory Homepage](./img/home.png)
 
@@ -45,5 +45,3 @@ For managers who need quick access to other employee's contact information.
 ## License
 
 This project is licensed under the **MIT License**.
-
-This homework assignment is part of the [Carleton University Coding Bootcamp](https://bootcamp.carleton.ca/).
